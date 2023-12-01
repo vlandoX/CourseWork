@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CourseWork</string>
+    <string name="required">Required</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="sign_up">Создать аккаунт</string>
+    <string-array name="select_role">
+        <item>Пассажир</item>
+        <item>Водитель</item>
+    </string-array>
+</resources>
