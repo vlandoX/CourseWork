@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".screens.carRegistration.CarRegistrationFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Укажите данные \nсвоего автомобиля"
+        android:textColor="@color/purple_500"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="6"
+        app:helperText=" "
+        app:helperTextTextColor="@android:color/holo_red_dark">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Номер автомобиля: А000АА"
+            android:inputType="text"
+            android:lines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/carContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:helperText=" "
+        app:helperTextTextColor="@android:color/holo_red_dark">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/carModelEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Марка и модель автомобиля"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/colorContainer"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:helperText=" "
+        app:helperTextTextColor="@android:color/holo_red_dark">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/colorEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Цвет автомобиля"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="8dp"
+        android:text="Готово "
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:cornerRadius="8dp" />
+
+</LinearLayout>
