@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".screens.carRegistration.CarRegistrationFragment">
+    tools:context=".screens.carRegistration.CarRegFragment">
 
     <TextView
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/phoneContainer"
+        android:id="@+id/regNumberContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         app:helperTextTextColor="@android:color/holo_red_dark">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/phoneEditText"
+            android:id="@+id/regNumberEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Номер автомобиля: А000АА"
@@ -40,7 +40,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/carContainer"
+        android:id="@+id/modelContainer"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         app:helperTextTextColor="@android:color/holo_red_dark">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/carModelEditText"
+            android:id="@+id/modelEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Марка и модель автомобиля"
@@ -75,14 +75,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/regCarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginTop="8dp"
-        android:paddingHorizontal="32dp"
+        android:paddingHorizontal="38dp"
         android:paddingVertical="8dp"
-        android:text="Готово "
+        android:text="Готово"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:cornerRadius="8dp" />

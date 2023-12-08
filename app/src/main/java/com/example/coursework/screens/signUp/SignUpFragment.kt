@@ -16,8 +16,7 @@ import com.example.coursework.MainActivity
 import com.example.coursework.R
 import com.example.coursework.databinding.FragmentSignUpBinding
 import com.example.coursework.retrofit.SignUpRequest
-import com.example.coursework.screens.signIn.SignInViewModel
-import com.example.coursework.screens.signIn.SignInViewModelFactory
+
 
 
 class SignUpFragment : Fragment() {
@@ -49,6 +48,16 @@ class SignUpFragment : Fragment() {
         chooseRoleListener()
         validAgeCheck()
 
+        binding.submitButton.setOnClickListener {
+            submitForm()
+        }
+
+        binding.signInRedirectText.setOnClickListener {
+            view.findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
+            Toast.makeText(activity, "Авторизация", Toast.LENGTH_SHORT).show()
+        }
+
+
         viewModel.responseContainer.observe(this, Observer {
             if (it != null) {
 
@@ -63,41 +72,34 @@ class SignUpFragment : Fragment() {
                 }
 
             } else {
-                Toast.makeText(activity, "Ошибка! Данный номер телефона или пароль уже используется!", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                    activity,
+                    "Ошибка! Данный номер телефона или пароль уже используется!",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         })
 
-        binding.submitButton.setOnClickListener {
-            submitForm()
-        }
-
-
-        binding.signInRedirectText.setOnClickListener {
-            view.findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
-            Toast.makeText(activity, "Авторизация", Toast.LENGTH_SHORT).show()
-        }
-
-        viewModel.isShowProgress.observe(this, Observer {
+        /*viewModel.isShowProgress.observe(this, Observer {
             if (it) {
                 binding.progressBar.visibility = View.VISIBLE
             } else {
                 binding.progressBar.visibility = View.GONE
             }
-        })
+        })*/
 
         viewModel.errorMessage.observe(this, Observer {
             Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
         })
     }
 
-    fun initViewModel() {
+    private fun initViewModel() {
         val viewModelFactory = SignUpViewModelFactory(LoadingAlert(activity as MainActivity))
         viewModel = ViewModelProvider(this, viewModelFactory).get(SignUpViewModel::class.java)
     }
 
     private fun submitForm() {
         with(binding) {
-
             nameContainer.helperText = viewModel.validName(nameEditText.text.toString())
             phoneContainer.helperText = viewModel.validPhone(phoneEditText.text.toString())
             passwordContainer.helperText = viewModel.validPassword(passwordEditText.text.toString())
@@ -122,6 +124,11 @@ class SignUpFragment : Fragment() {
         }
     }
 
+    private fun roleForRequestFormat(): String {
+        val role = binding.dropdownField.text.toString()
+        return if (role == "Пассажир") "ROLE_PASSENGER"
+        else "ROLE_DRIVER"
+    }
 
     private fun validAgeCheck() {
         binding.checkBox.setOnCheckedChangeListener { _, isChecked -> checkConditions() }
@@ -189,14 +196,6 @@ class SignUpFragment : Fragment() {
                 }
                 checkConditions()
             }
-
-    }
-
-    fun roleForRequestFormat(): String {
-        val role = binding.dropdownField.text.toString()
-        return if (role == "Пассажир") "ROLE_PASSENGER"
-        else "ROLE_DRIVER"
-
     }
 
     private fun checkConditions() {
@@ -216,7 +215,6 @@ class SignUpFragment : Fragment() {
                         && repeatPasswordError == null && chooseRoleError == null && binding.checkBox.isChecked
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

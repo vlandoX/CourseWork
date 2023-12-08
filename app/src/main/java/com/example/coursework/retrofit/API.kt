@@ -10,9 +10,18 @@ interface API {
         @Body signUpRequest: SignUpRequest
     ): Response<RegistrationResponse>
 
+    @POST("users")
+    suspend fun regCar(
+        @Body car: Car
+    ): Response<RegistrationResponse>
 
     @POST("auth/login")
     suspend fun auth(
         @Body authRequest: AuthRequest
+    ): Response<RegistrationResponse>
+
+    @POST("tracks")
+    suspend fun track(
+        @Body trackRequest: TrackRequest
     ): Response<RegistrationResponse>
 }

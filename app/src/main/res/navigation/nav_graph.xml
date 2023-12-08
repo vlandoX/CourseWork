@@ -47,12 +47,12 @@
     </fragment>
     <fragment
         android:id="@+id/carRegistrationFragment"
-        android:name="com.example.coursework.screens.carRegistration.CarRegistrationFragment"
+        android:name="com.example.coursework.screens.carRegistration.CarRegFragment"
         android:label="fragment_car_registration"
         tools:layout="@layout/fragment_car_registration" />
     <fragment
         android:id="@+id/routeCreationFragment"
-        android:name="com.example.coursework.screens.passengerRoute.RouteCreationFragment"
+        android:name="com.example.coursework.screens.passengerRoute.SearchRouteFragment"
         android:label="fragment_route_creation"
-        tools:layout="@layout/fragment_route_creation" />
+        tools:layout="@layout/fragment_search_route" />
 </navigation>

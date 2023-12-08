@@ -1,25 +1,25 @@
-package com.example.coursework.screens.signIn
+package com.example.coursework.screens.carRegistration
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coursework.LoadingAlert
-import com.example.coursework.retrofit.*
+import com.example.coursework.retrofit.Car
+import com.example.coursework.retrofit.RegistrationResponse
+import com.example.coursework.retrofit.RetrofitInstanceModule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class SignInViewModel(private val loadingAlert: LoadingAlert) : ViewModel() {
+class CarRegViewModel(private val loadingAlert: LoadingAlert) : ViewModel() {
 
-    val token = MutableLiveData<String>()
     val errorMessage = MutableLiveData<String>()
     val responseContainer = MutableLiveData<RegistrationResponse>()
 
-
-    fun authUser(authRequest: AuthRequest){
+    fun signUpCar(car: Car){
         loadingAlert.startAlertDialog()
         viewModelScope.launch {
-            val response = RetrofitInstanceModule.getInstance().auth(authRequest)
+            val response = RetrofitInstanceModule.getInstance().regCar(car)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     responseContainer.postValue(response.body())
@@ -36,4 +36,5 @@ class SignInViewModel(private val loadingAlert: LoadingAlert) : ViewModel() {
         errorMessage.value = message
         loadingAlert.closeAlertDialog()
     }
+
 }

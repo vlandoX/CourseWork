@@ -3,8 +3,10 @@
     <string name="required">Required</string>
     <string name="phone_number">Phone Number</string>
     <string name="sign_up">Создать аккаунт</string>
-    <string-array name="select_role">
-        <item>Пассажир</item>
-        <item>Водитель</item>
+    <string-array name="num_of_seats">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
     </string-array>
 </resources>

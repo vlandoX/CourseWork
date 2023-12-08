@@ -14,8 +14,8 @@ data class User(
 )
 
 data class Car(
-    val regNumber: String,
     val model: String,
-    val color: String
+    val color: String,
+    val regNumber: String
 )
 

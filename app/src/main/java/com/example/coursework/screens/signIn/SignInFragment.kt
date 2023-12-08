@@ -37,6 +37,14 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
 
+        binding.loginButton.setOnClickListener {
+            validation()
+        }
+        binding.signUpRedirectText.setOnClickListener {
+            view.findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
+            Toast.makeText(activity, "Регистрация", Toast.LENGTH_SHORT).show()
+        }
+
         viewModel.responseContainer.observe(this, Observer {
             if (it != null) {
 
@@ -55,22 +63,20 @@ class SignInFragment : Fragment() {
             }
         })
 
-        binding.loginButton.setOnClickListener {
-            validation()
-        }
-        binding.signUpRedirectText.setOnClickListener {
-            view.findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
-            Toast.makeText(activity, "Регистрация", Toast.LENGTH_SHORT).show()
-        }
+        viewModel.errorMessage.observe(this, Observer {
+            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
+        })
+
+
     }
 
-    fun initViewModel() {
+    private fun initViewModel() {
         val viewModelFactory = SignInViewModelFactory(LoadingAlert(activity as MainActivity))
         viewModel = ViewModelProvider(this, viewModelFactory).get(SignInViewModel::class.java)
     }
 
 
-    fun validation() {
+    private fun validation() {
         binding.phoneContainer.helperText = validateUserPhone()
         binding.passwordContainer.helperText = validatePassword()
 
@@ -108,6 +114,11 @@ class SignInFragment : Fragment() {
         } else {
             return null
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 

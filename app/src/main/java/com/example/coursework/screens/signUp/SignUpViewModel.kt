@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 class SignUpViewModel(private val loadingAlert: LoadingAlert) : ViewModel() {
 
-    val isShowProgress = MutableLiveData<Boolean>()
+    //val isShowProgress = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
     val responseContainer = MutableLiveData<RegistrationResponse>()
 
