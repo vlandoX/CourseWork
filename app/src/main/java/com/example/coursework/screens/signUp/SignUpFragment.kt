@@ -15,8 +15,9 @@ import com.example.coursework.LoadingAlert
 import com.example.coursework.MainActivity
 import com.example.coursework.R
 import com.example.coursework.databinding.FragmentSignUpBinding
+import com.example.coursework.misc.UserPrefs
 import com.example.coursework.retrofit.SignUpRequest
-
+import com.example.coursework.static.Static
 
 
 class SignUpFragment : Fragment() {
@@ -60,6 +61,14 @@ class SignUpFragment : Fragment() {
 
         viewModel.responseContainer.observe(this, Observer {
             if (it != null) {
+
+                Static.user = it.user
+                Static.token = it.token
+
+                val prefs = UserPrefs(requireContext())
+                prefs.saveUser(it.user)
+                prefs.saveToken(it.token)
+
 
                 //navigate to the creating route screen for Passenger
                 when (it.user.role) {

@@ -13,7 +13,9 @@ import com.example.coursework.LoadingAlert
 import com.example.coursework.MainActivity
 import com.example.coursework.R
 import com.example.coursework.databinding.FragmentSignInBinding
+import com.example.coursework.misc.UserPrefs
 import com.example.coursework.retrofit.AuthRequest
+import com.example.coursework.static.Static
 
 
 class SignInFragment : Fragment() {
@@ -48,13 +50,22 @@ class SignInFragment : Fragment() {
         viewModel.responseContainer.observe(this, Observer {
             if (it != null) {
 
+                Static.user = it.user
+                Static.token = it.token
+
+                val prefs = UserPrefs(requireContext())
+                prefs.saveUser(it.user)
+                prefs.saveToken(it.token)
+
                 when (it.user.role) {
                     "ROLE_PASSENGER" -> view.findNavController()
                         .navigate(R.id.action_signInFragment_to_routeCreationFragment)
 
                     //navigate to the registration car screen for Driver
-                    "ROLE_DRIVER" -> view.findNavController()
-                        .navigate(R.id.action_signInFragment_to_carRegistrationFragment)
+                    "ROLE_DRIVER" ->{
+                        if(it.user.car!= null) view.findNavController().navigate(R.id.action_signInFragment_to_creatingRouteFragment)
+                        else view.findNavController().navigate(R.id.action_signInFragment_to_carRegistrationFragment)
+                    }
                 }
 
             } else {

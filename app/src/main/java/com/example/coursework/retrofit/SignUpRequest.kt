@@ -14,14 +14,16 @@ data class AuthRequest(
     val password: String
 )
 
-data class CarRequest(
-    val model: String,
-    val color: String,
-    val regNumber: String
-)
-
-data class TrackRequest(
+data class CreateTrackRequest(
+    val startLocation: Location,
+    val endLocation: Location,
     val maxSeats: Int,
-    //val departureTime: Date,
+    val departureTime: String,
     val driverComment: String
 )
+
+
+
+
+
+

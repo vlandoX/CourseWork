@@ -1,4 +1,4 @@
-package com.example.coursework.screens.carRegistration
+package com.example.coursework.screens.driver.carRegistration
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

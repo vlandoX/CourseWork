@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="14dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+
+            <TextView
+                android:id="@+id/titleDepartureTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Время отправления: "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/departureTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/purple_700"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/titleDepartureTimeTextView"
+                app:layout_constraintTop_toTopOf="@id/titleDepartureTimeTextView"
+                tools:text="2023-12-08T18:23:49.000Z" />
+
+            <TextView
+                android:id="@+id/titleDriverTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Водитель:  "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleDepartureTimeTextView" />
+
+            <TextView
+                android:id="@+id/nameDriverTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text=""
+                android:textColor="@color/purple_700"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/titleDriverTextView"
+                app:layout_constraintStart_toEndOf="@id/titleDriverTextView"
+                tools:text="Армен" />
+
+            <TextView
+                android:id="@+id/titleMaxSeatsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Кол-во мест: "
+                app:layout_constraintStart_toStartOf="@+id/departureTimeTextView"
+                app:layout_constraintTop_toBottomOf="@+id/departureTimeTextView" />
+
+            <TextView
+                android:id="@+id/maxSeatsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text=""
+                android:textColor="@color/purple_700"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@+id/titleMaxSeatsTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/titleMaxSeatsTextView"
+                tools:text="3" />
+
+            <TextView
+                android:id="@+id/titleFromTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Откуда:"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleMaxSeatsTextView" />
+
+            <TextView
+                android:id="@+id/fromTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text=""
+                android:textColor="@color/purple_700"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleFromTextView"
+                tools:text='"1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA"' />
+
+            <TextView
+                android:id="@+id/titleToTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Куда:"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fromTextView" />
+
+            <TextView
+                android:id="@+id/toTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text=""
+                android:textColor="@color/purple_700"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleToTextView"
+                tools:text='"Google Building 43, Mountain View, CA 94043, USA"' />
+
+            <TextView
+                android:id="@+id/titleCommentTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:text="Комментарии водителя:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toTextView" />
+
+            <TextView
+                android:id="@+id/commentTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/purple_700"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:text=""
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleCommentTextView"
+                tools:text="Брат от души прокачу, отвечаю ежжи иииууу \n (5000 руб)" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

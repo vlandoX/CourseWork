@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/signInFragment">
+    app:startDestination="@id/starterFragment">
 
     <fragment
         android:id="@+id/signInFragment"
@@ -21,6 +21,11 @@
         <action
             android:id="@+id/action_signInFragment_to_routeCreationFragment"
             app:destination="@id/routeCreationFragment"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_signInFragment_to_creatingRouteFragment"
+            app:destination="@id/creatingRouteFragment"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -47,12 +52,204 @@
     </fragment>
     <fragment
         android:id="@+id/carRegistrationFragment"
-        android:name="com.example.coursework.screens.carRegistration.CarRegFragment"
+        android:name="com.example.coursework.screens.driver.carRegistration.CarRegFragment"
         android:label="fragment_car_registration"
-        tools:layout="@layout/fragment_car_registration" />
+        tools:layout="@layout/fragment_car_registration" >
+        <action
+            android:id="@+id/action_carRegistrationFragment_to_creatingRouteFragment"
+            app:destination="@id/creatingRouteFragment"
+            app:popUpTo="@id/signInFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/routeCreationFragment"
-        android:name="com.example.coursework.screens.passengerRoute.SearchRouteFragment"
+        android:name="com.example.coursework.screens.passenger.passengerRoute.CreatingRouteFragment"
         android:label="fragment_route_creation"
-        tools:layout="@layout/fragment_search_route" />
+        tools:layout="@layout/fragment_creating_passenger_route" >
+        <argument
+            android:name="startX"
+            app:argType="string"
+            android:defaultValue='' />
+        <argument
+            android:name="startY"
+            app:argType="string"
+            android:defaultValue='' />
+        <argument
+            android:name="endX"
+            app:argType="string"
+            android:defaultValue='' />
+        <argument
+            android:name="endY"
+            app:argType="string"
+            android:defaultValue='' />
+        <argument
+            android:name="startAddress"
+            app:argType="string"
+            android:defaultValue='' />
+        <argument
+            android:name="endAddress"
+            app:argType="string"
+            android:defaultValue='' />
+        <action
+            android:id="@+id/action_routeCreationFragment_to_mapSelectRouteFragment"
+            app:destination="@id/mapSelectRouteFragment" />
+        <action
+            android:id="@+id/action_routeCreationFragment_to_routeListingFragment"
+            app:destination="@id/routeListingFragment" >
+            <argument
+                android:name="startX"
+                app:argType="string"
+                android:defaultValue="0" />
+            <argument
+                android:name="startY"
+                app:argType="string"
+                android:defaultValue="0" />
+            <argument
+                android:name="endX"
+                app:argType="string"
+                android:defaultValue="0" />
+            <argument
+                android:name="endY"
+                app:argType="string"
+                android:defaultValue="0" />
+        </action>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/creatingRouteFragment"
+        android:name="com.example.coursework.screens.driver.driverRoute.CreatingRouteFragment"
+        android:label="fragment_creating_route"
+        tools:layout="@layout/fragment_creating_driver_route" >
+        <action
+            android:id="@+id/action_creatingRouteFragment_to_mapSelectRouteFragment"
+            app:destination="@id/mapSelectRouteFragment" />
+        <argument
+            android:name="startX"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="startY"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="endX"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="endY"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="startAddress"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="endAddress"
+            app:argType="string"
+            android:defaultValue=""/>
+        <action
+            android:id="@+id/action_creatingRouteFragment_to_routeFragment"
+            app:destination="@id/routeFragment"
+            app:popUpTo="@id/creatingRouteFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/mapSelectRouteFragment"
+        android:name="com.example.coursework.screens.map.MapSelectRouteFragment"
+        android:label="fragment_map_select_route"
+        tools:layout="@layout/fragment_map_select_route" >
+        <action
+            android:id="@+id/action_mapSelectRouteFragment_to_creatingRouteFragment"
+            app:destination="@id/creatingRouteFragment"
+            app:popUpTo="@id/mapSelectRouteFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mapSelectRouteFragment_to_routeCreationFragment"
+            app:destination="@id/routeCreationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/routeFragment"
+        android:name="com.example.coursework.screens.driver.route.RouteFragment"
+        android:label="fragment_route"
+        tools:layout="@layout/fragment_route" >
+        <action
+            android:id="@+id/action_routeFragment_to_creatingRouteFragment"
+            app:destination="@id/creatingRouteFragment"
+            app:popUpTo="@id/routeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/starterFragment"
+        android:name="com.example.coursework.screens.starter.StarterFragment"
+        android:label="fragment_starter"
+        tools:layout="@layout/fragment_starter" >
+        <action
+            android:id="@+id/action_starterFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/starterFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_starterFragment_to_carRegistrationFragment"
+            app:destination="@id/carRegistrationFragment"
+            app:popUpTo="@id/starterFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_starterFragment_to_routeCreationFragment"
+            app:destination="@id/routeCreationFragment"
+            app:popUpTo="@id/starterFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_starterFragment_to_creatingRouteFragment"
+            app:destination="@id/creatingRouteFragment"
+            app:popUpTo="@id/starterFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_starterFragment_to_routeFragment"
+            app:destination="@id/routeFragment"
+            app:popUpTo="@id/starterFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_starterFragment_to_passengerRouteFragment"
+            app:destination="@id/passengerRouteFragment"
+            app:popUpTo="@id/starterFragment"
+            app:popUpToInclusive="true">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/routeListingFragment"
+        android:name="com.example.coursework.screens.passenger.routeListing.RouteListingFragment"
+        android:label="fragment_route_listing"
+        tools:layout="@layout/fragment_route_listing" >
+        <argument
+            android:name="startX"
+            app:argType="string"
+            android:defaultValue='0' />
+        <argument
+            android:name="startY"
+            app:argType="string"
+            android:defaultValue='0' />
+        <argument
+            android:name="endX"
+            app:argType="string"
+            android:defaultValue='0' />
+        <argument
+            android:name="endY"
+            app:argType="string"
+            android:defaultValue="0"/>
+        <action
+            android:id="@+id/action_routeListingFragment_to_passengerRouteFragment"
+            app:destination="@id/passengerRouteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passengerRouteFragment"
+        android:name="com.example.coursework.screens.passenger.route.PassengerRouteFragment"
+        android:label="fragment_passenger_route"
+        tools:layout="@layout/fragment_passenger_route" >
+        <argument
+            android:name="track"
+            app:argType="com.example.coursework.retrofit.TrackExpanded"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".screens.carRegistration.CarRegFragment">
+    tools:context=".screens.driver.carRegistration.CarRegFragment">
 
     <TextView
         android:layout_width="match_parent"

@@ -1,38 +1,47 @@
-package com.example.coursework.screens.signIn
+package com.example.coursework.screens.driver.driverRoute
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.coursework.LoadingAlert
 import com.example.coursework.retrofit.*
+
+import com.example.coursework.static.Static
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
-class SignInViewModel(private val loadingAlert: LoadingAlert) : ViewModel() {
-
+class CreatingRouteViewModel : ViewModel() {
+    val isShowProgress = MutableLiveData<Boolean>()
+    val selectedTime = MutableLiveData<Date>(Calendar.getInstance().time)
     val errorMessage = MutableLiveData<String>()
-    val responseContainer = MutableLiveData<RegistrationResponse>()
+    val responseContainer = MutableLiveData<CreateTrackResponse>()
 
 
-    fun authUser(authRequest: AuthRequest){
-        loadingAlert.startAlertDialog()
+
+    fun createRoute(trackRequest: CreateTrackRequest){
+        isShowProgress.value = true
+
         viewModelScope.launch {
-            val response = RetrofitInstanceModule.getInstance().auth(authRequest)
+            if(Static.user == null) return@launch
+            val response = RetrofitInstanceModule.getInstance().track(trackRequest)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     responseContainer.postValue(response.body())
-                    loadingAlert.closeAlertDialog()
+                    isShowProgress.value = false
+
                 }else{
                     onError("Error : ${response.message()}")
                 }
 
             }
         }
+
     }
 
     private fun onError(message: String) {
         errorMessage.value = message
-        loadingAlert.closeAlertDialog()
+        isShowProgress.value = false
+
     }
 }

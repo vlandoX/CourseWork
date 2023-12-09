@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".screens.driverRoute.CreatingRouteFragment">
+    tools:context=".screens.driver.driverRoute.CreatingRouteFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,42 +25,37 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.google.android.material.textfield.TextInputLayout
+        <Button
             android:id="@+id/fromContainer"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
+            android:textAllCaps="false"
+            android:textColor="@color/grey"
+            android:text="Откуда"
+            app:strokeColor="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelTextView">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edFrom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Откуда"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+        </Button>
 
 
-        <com.google.android.material.textfield.TextInputLayout
+        <Button
             android:id="@+id/toContainer"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:text="Куда"
+            app:strokeColor="@color/grey"
+            android:textAllCaps="false"
+            android:textColor="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/fromContainer">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edTo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Куда"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+        </Button>
 
 
         <Button
@@ -107,6 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
+                android:maxLines="5"
                 android:hint="Комментарии к поездке (стоимость и д.р.)"
                 android:inputType="textMultiLine"
                 android:lines="4"

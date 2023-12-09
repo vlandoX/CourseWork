@@ -1,4 +1,4 @@
-package com.example.coursework.screens.carRegistration
+package com.example.coursework.screens.driver.carRegistration
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -16,6 +16,7 @@ import com.example.coursework.databinding.FragmentCarRegistrationBinding
 import com.example.coursework.retrofit.Car
 import com.example.coursework.screens.signIn.SignInViewModel
 import com.example.coursework.screens.signIn.SignInViewModelFactory
+import com.example.coursework.static.Static
 
 class CarRegFragment : Fragment() {
 
@@ -46,9 +47,11 @@ class CarRegFragment : Fragment() {
         viewModel.responseContainer.observe(this, Observer {
             if (it != null) {
 
+                Static.user = it
+
                 Toast.makeText(activity, "Автомобиль успешно зарегистрирован", Toast.LENGTH_SHORT).show()
 
-                TODO("Переход на след экран Создание маршрута")
+                view.findNavController().navigate(R.id.action_carRegistrationFragment_to_creatingRouteFragment)
 
 
             } else {
